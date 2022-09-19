@@ -14,44 +14,55 @@ def main():
     gallery = "Our final stop will be at gallery \nA lot of students participate in creating annual exhibitions"
     end = "You made this! Congratulations! \nIt was not that hard, right, "
     question = "?"
+    stops = "You have successfully completed the following number of stops:"
     ask_for_name = "To continue, enter your name: "
     next = "Press ENTER to continue"
     
-    
+    number_of_stops = 0
     print(introduction)
     name = input(ask_for_name)
     
-    print(ok, name, residence)
+    print(ok + name + residence)
     input(next)
+    number_of_stops += 1
     
     print(park)
     input(next)
+    number_of_stops += 1
     
     print(library)
     input(next)
+    number_of_stops += 1
    
     print(dininghall)
     input(next)
+    number_of_stops += 1
     
     print(classroom)
     input(next)
+    number_of_stops += 1
     
     print(advisor)
     input(next)
+    number_of_stops += 1
     
     print(river)
     input(next)
+    number_of_stops += 1
     
     print(theater)
     input(next)
+    number_of_stops += 1
     
     print(gym)
     input(next)
+    number_of_stops += 1
     
     print(gallery)
     input(next)
+    number_of_stops += 1
     
-    print(end, name, question)
-    
+    print(stops, number_of_stops)
+    print(end + name + question)
     
 main()
