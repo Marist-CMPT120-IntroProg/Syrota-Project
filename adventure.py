@@ -1,4 +1,3 @@
-
 def main():
     title = "Surviving in college!"
     introduction = "Welcome to your new college and congratulation on your first day here! \nYour main goal is to go through all 10 locations and survive..."
@@ -20,6 +19,7 @@ def main():
     ask_for_name = "To continue, enter your name: "
     next = "Press ENTER to continue"
     details = "Press ENTER to learn more"
+    command = "Enter a command: "
     
     residence2 = "Here you will find your bed, table, chair and your wardrobe. As well as a window with a view of the whole university"
     park2 = "Here you can see the most popular tree on the entire campus, where everyone has had a picnic at least once."
@@ -43,6 +43,23 @@ def main():
     input(next)
     number_of_stops += 1
     
+    while True:
+        direction = input(command)
+        if direction.lower() == "north":
+            print("Your direction is North")
+        elif direction.lower() == "south":
+            print("Your direction is South")
+        elif direction.lower() == "east":
+            print("Your direction East")
+        elif direction.lower() == "west":
+            print("Your direction is West")
+        elif direction.lower() == "help":
+            print("Valid commands is North, South, East, West, Help and Quit")
+        elif direction.lower() == "quit":
+            break
+        else:
+            print('Your command is not found, try again or enter "Help"')
+        
     print(park)
     input(details)
     print(park2)
