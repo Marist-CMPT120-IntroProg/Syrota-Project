@@ -1,6 +1,7 @@
 
 def main():
-    introduction = "Surviving in college! \nWelcome to your new college and congratulation on your first day here! \nYour main goal is to go through all 10 locations and survive..."
+    title = "Surviving in college!"
+    introduction = "Welcome to your new college and congratulation on your first day here! \nYour main goal is to go through all 10 locations and survive..."
     residence = "\nNice to meet you! We will start from the first location - residence hall. \nHere you will be living with your roommate! Be sure that you know how to share space with other people."
     ok = "Okay, "
     park = "You will have more time to decorate your room, now let's move forward \nWe are now in the park. Here you can make your homework or hang out with your classmates"
@@ -32,8 +33,9 @@ def main():
     gallery2 = "Here you can see the progress of other players, \nand at the end of your journey post your own and share your experience"
     
     number_of_stops = 0
-    print(introduction)
+    print(title)
     name = input(ask_for_name)
+    print(introduction)
     
     print(ok + name + residence)
     input(details)
