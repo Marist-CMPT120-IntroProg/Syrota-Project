@@ -20,6 +20,7 @@ def main():
     next = "Press ENTER to continue"
     details = "Press ENTER to learn more"
     command = "Enter a command: "
+    valid = "Valid commands is North, South, East, West, Examine, Help and Quit"
     no_way = "Unfortunately, you are not allowed to go this way. Try another direction or ask for Help"
     copywright = "© Karina Syrota, 2022"
     
@@ -52,11 +53,9 @@ def main():
     print(introduction)
     name = input(ask_for_name)
     print(ok + name + residence)
-    input(details)
-    print(residence2)
-    input(next)
     
     while True:
+        print(valid)
         direction = input(command)
         #residence_hall
         if current_location == residence_name and direction.lower() == "north":
@@ -67,23 +66,17 @@ def main():
             current_location = park_name
             number_of_stops += 1
             print(park)
-            input(details)
-            print(park2)
             input(next)
         elif current_location == residence_name and direction.lower() == "east":
             current_location = dininghall_name
             number_of_stops += 1
             print(dininghall)
-            input(details)
-            print(dininghall2)
             input(next)
         #park
         elif current_location == park_name and direction.lower() == "north":
             current_location = residence_name
             number_of_stops += 1
             print(ok + name + residence)
-            input(details)
-            print(residence2)
             input(next)
         elif current_location == park_name and direction.lower() == "west":
             print(no_way) 
@@ -93,8 +86,6 @@ def main():
             current_location = library_name
             number_of_stops += 1
             print(library)
-            input(details)
-            print(library2)
             input(next) 
         #dining hall
         elif current_location == dininghall_name and direction.lower() == "north":
@@ -103,37 +94,27 @@ def main():
             current_location = residence_name
             number_of_stops += 1
             print(ok + name + residence)
-            input(details)
-            print(residence2)
             input(next) 
         elif current_location == dininghall_name and direction.lower() == "south":
             current_location = library_name
             number_of_stops += 1
             print(library)
-            input(details)
-            print(library2)
             input(next) 
         elif current_location == dininghall_name and direction.lower() == "east":
             current_location = advisor_name
             number_of_stops += 1
             print(advisor)
-            input(details)
-            print(advisor2)
             input(next)
         #library
         elif current_location == library_name and direction.lower() == "north":
             current_location = dininghall_name
             number_of_stops += 1
             print(dininghall)
-            input(details)
-            print(dininghall2)
             input(next) 
         elif current_location == library_name and direction.lower() == "west":
             current_location = park_name
             number_of_stops += 1
             print(park)
-            input(details)
-            print(park2)
             input(next)
         elif current_location == library_name and direction.lower() == "south":
             print(no_way)
@@ -141,8 +122,6 @@ def main():
             current_location = classroom_name
             number_of_stops += 1
             print(classroom)
-            input(details)
-            print(classroom2)
             input(next)
         #advisor office
         elif current_location == advisor_name and direction.lower() == "north":
@@ -151,59 +130,43 @@ def main():
             current_location = dininghall_name
             number_of_stops += 1
             print(dininghall)
-            input(details)
-            print(dininghall2)
             input(next)
         elif current_location == advisor_name and direction.lower() == "south":
             current_location = classroom_name
             number_of_stops += 1
             print(classroom)
-            input(details)
-            print(classroom2)
             input(next)
         elif current_location == advisor_name and direction.lower() == "east":
             current_location = gym_name
             number_of_stops += 1
             print(gym)
-            input(details)
-            print(gym2)
             input(next)
         #classroom
         elif current_location == classroom_name and direction.lower() == "north":
             current_location = advisor_name
             number_of_stops += 1
             print(advisor)
-            input(details)
-            print(advisor2)
             input(next)
         elif current_location == classroom_name and direction.lower() == "west":
             current_location = library_name
             number_of_stops += 1
             print(library)
-            input(details)
-            print(library2)
             input(next)
         elif current_location == classroom_name and direction.lower() == "south":
             current_location = river_name
             number_of_stops += 1
             print(river)
-            input(details)
-            print(river2)
             input(next)
         elif current_location == classroom_name and direction.lower() == "east":
             current_location = theater_name
             number_of_stops += 1
             print(theater)
-            input(details)
-            print(theater2)
             input(next)
         #river
         elif current_location == river_name and direction.lower() == "north":
             current_location = classroom_name
             number_of_stops += 1
             print(classroom)
-            input(details)
-            print(classroom2)
             input(next)
         elif current_location == river_name and direction.lower() == "west":
             print(no_way)
@@ -213,8 +176,6 @@ def main():
             current_location = gallery_name
             number_of_stops += 1
             print(gallery)
-            input(details)
-            print(gallery2)
             input(next)
         #gym
         elif current_location == gym_name and direction.lower() == "north":
@@ -223,15 +184,11 @@ def main():
             current_location = advisor_name
             number_of_stops += 1
             print(advisor)
-            input(details)
-            print(advisor2)
             input(next)
         elif current_location == gym_name and direction.lower() == "south":
             current_location = theater_name
             number_of_stops += 1
             print(theater)
-            input(details)
-            print(theater2)
             input(next)
         elif current_location == gym_name and direction.lower() == "east":
             print(no_way)
@@ -240,22 +197,16 @@ def main():
             current_location = gym_name
             number_of_stops += 1
             print(gym)
-            input(details)
-            print(gym2)
             input(next)
         elif current_location == theater_name and direction.lower() == "west":
             current_location = classroom_name
             number_of_stops += 1
             print(classroom)
-            input(details)
-            print(classroom2)
             input(next)
         elif current_location == theater_name and direction.lower() == "south":
             current_location = gallery_name
             number_of_stops += 1
             print(gallery)
-            input(details)
-            print(gallery2)
             input(next)
         elif current_location == theater_name and direction.lower() == "east":
             print(no_way)
@@ -264,22 +215,39 @@ def main():
             current_location = theater_name
             number_of_stops += 1
             print(theater)
-            input(details)
-            print(theater2)
             input(next)
         elif current_location == gallery_name and direction.lower() == "west":
             current_location = river_name
             number_of_stops += 1
             print(river)
-            input(details)
-            print(river2)
             input(next)
         elif current_location == gallery_name and direction.lower() == "south":
             print(no_way)
         elif current_location == gallery_name and direction.lower() == "east":
             print(no_way)
         elif direction.lower() == "help":
-            print("Valid commands is North, South, East, West, Help and Quit")
+            print(valid)
+        #examine command
+        elif direction.lower() == "examine" and current_location == residence_name:
+            print(residence2)
+        elif direction.lower() == "examine" and current_location == dininghall_name:
+            print(dininghall2)
+        elif direction.lower() == "examine" and current_location == park_name:
+            print(park2)
+        elif direction.lower() == "examine" and current_location == library_name:
+            print(library2)
+        elif direction.lower() == "examine" and current_location == advisor_name:
+            print(advisor2)
+        elif direction.lower() == "examine" and current_location == classroom_name:
+            print(classroom2)
+        elif direction.lower() == "examine" and current_location == river_name:
+            print(river2)
+        elif direction.lower() == "examine" and current_location == gym_name:
+            print(gym2)
+        elif direction.lower() == "examine" and current_location == theater_name:
+            print(theater2)
+        elif direction.lower() == "examine" and current_location == gallery_name:
+            print(gallery2)
         elif direction.lower() == "quit":
             break
         else:
