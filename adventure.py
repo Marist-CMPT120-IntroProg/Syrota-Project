@@ -21,6 +21,7 @@ def main():
     details = "Press ENTER to learn more"
     command = "Enter a command: "
     no_way = "Unfortunately, you are not allowed to go this way. Try another direction or ask for Help"
+    copywright = "© Karina Syrota, 2022"
     
     residence2 = "Here you will find your bed, table, chair and your wardrobe. As well as a window with a view of the whole university"
     park2 = "Here you can see the most popular tree on the entire campus, where everyone has had a picnic at least once."
@@ -286,5 +287,7 @@ def main():
 
     print(stops, number_of_stops)
     print(end + name + question)
+    print("_____________________")
+    print(copywright)
     
 main()
