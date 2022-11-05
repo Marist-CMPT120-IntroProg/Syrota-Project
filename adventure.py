@@ -2,6 +2,18 @@ def main():
     title = "Surviving in college!"
     introduction = "Welcome to your new college and congratulation on your first day here! \nYour main goal is to go through all 10 locations and survive..."
     
+    marist_world = [{"name": "Residence Hall", "summary": "This is Residence Hall. \nHere you will be living with your roommate! Be sure that you know how to share space with other people.", "details": "Here you will find your bed, table, chair and your wardrobe. \nAs well as a window with a view of the whole university", "was_visited": False},
+                    {"name": "Park", "summary": "We are now in the Park. \nHere you can make your homework or hang out with your classmates", "details": "Here you can see the most popular tree on the entire campus, where everyone has had a picnic at least once.", "was_visited": False},
+                    {"name": "Library", "summary": "Library is the best place to study and make your homework.", "details": "The Library has 3 floors. You can find here tones of different books, places for collaboration, as well as quiet spaces", "was_visited": False},
+                    {"name": "Dining Hall", "summary": "Well..I know you are tired and hungry, right? \nHere is the Dining Hall! \nYou can choose any food you want and fill yourself with energy", "details": "We are now inside the dining hall. \nEach table has different food from all over the world. \nOur chefs organize different events once a week.", "was_visited": False},
+                    {"name": "Lecture Halls and Classroom", "summary": "Probably, here you will spend most of your time \nThis is the lecture halls and classrooms \nIn order to survive - make your homework and be present at the lectures", "details": "You are sitting at a desk now, there is a blackboard in front of you. \nTake out your notebook and pen and prepare your ears for active listening", "was_visited": False},
+                    {"name": "Advisor Office", "summary": "This is Advisor Office! \nYour advisor will be helping you any time a day. \nYou can always come at the Advisor Office to ask the rules of the game or ask for the hint", "details": "Your advisors name is Matthew Firland. He will help to develop the best strategy from start till the end", "was_visited": False},
+                    {"name": "River", "summary": "This is a River! It is a perfect spot if you need to calm down and spend some time with yourself! Go here at any time you want to talk to yourself.", "details": "This is a bench to stop for a second and rest. You can pause your day, while sitting on it", "was_visited": False},
+                    {"name": "Theater", "summary": "All events, information sessions, club activities, shows will be here... \nat the Theater!", "details": "If you go up this stairs, you will be right in the center of the stage. \nUse this opportunity to say what you think. This way you can find like-minded people who will become your team in the future. \nHint: Having a team will make your game go much faster and easier", "was_visited": False},
+                    {"name": "Gym", "summary": "Now we are inside the Gym, perfect place to keep yourself in good form", "details": "There are two areas: a fitness room and a swimming pool. \nTry to make it your daily routine and you will be able to do your other things more productively.", "was_visited": False},
+                    {"name": "Gallery", "summary": "This is a Gallery! \nA lot of students participate in creating annual exhibitions here", "details": "Here you can see the progress of other players, \nand at the end of your journey post your own and share your experience", "was_visited": False}
+                    ]
+    
     #Location descriptions
     residence = "\nNice to meet you! We will start from the first location - residence hall. \nHere you will be living with your roommate! Be sure that you know how to share space with other people."
     ok = "Okay, "
@@ -33,7 +45,7 @@ def main():
     classroom2 = "You are sitting at a desk now, there is a blackboard in front of you. \nTake out your notebook and pen and prepare your ears for active listening"
     advisor2 = "Your advisors name is Matthew Firland. He will help to develop the best strategy from start till the end"
     river2 = "This is a bench to stop for a second and rest. Sitting on it you can pause your day."
-    theater2 = "If you go up this stairs, you will be right in the center of the stage. \nUse this opportunity to say what you think. This way you can find like-minded people who will become your team. \nHint: it will make your game go much faster and easier"
+    theater2 = "If you go up this stairs, you will be right in the center of the stage. \nUse this opportunity to say what you think. This way you can find like-minded people who will become your team in the future. \nHint: Having a team will make your game go much faster and easier"
     gym2 = "There are two areas: a fitness room and a swimming pool. \nTry to make it your daily routine and you will be able to do your other things more productively."
     gallery2 = "Here you can see the progress of other players, \nand at the end of your journey post your own and share your experience"
     
