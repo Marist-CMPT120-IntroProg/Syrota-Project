@@ -14,6 +14,9 @@ def main():
                     {"name": "GALLERY", "summary": "This is a GALLERY! \nA lot of students participate in creating annual exhibitions here", "details": "Here you can see the progress of other players, \nand at the end of your journey post your own and share your experience", "was_visited": False}
                     ]
     
+    #2D matrix of Marist map
+    marist_map = [[None,3,1,None],[0,2,None,None],[3,4,None,1],[None,5,2,0],[5,7,6,2],[None,8,4,3],[4,9,None,None],[8,None,9,4],[None,None,7,5],[7,None,None,6]]
+    
     #Variables with location titles
     residence_dict = marist_world[0]
     park_dict = marist_world[1]
