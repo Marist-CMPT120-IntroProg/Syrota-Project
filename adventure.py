@@ -17,27 +17,14 @@ def main():
     #2D matrix of Marist map
     marist_map = [[None,3,1,None],[0,2,None,None],[3,4,None,1],[None,5,2,0],[5,7,6,2],[None,8,4,3],[4,9,None,None],[8,None,9,4],[None,None,7,5],[7,None,None,6]]
     
-    #Variables with location titles
-    residence_dict = marist_world[0]
-    park_dict = marist_world[1]
-    library_dict = marist_world[2]
-    dininghall_dict = marist_world[3]
-    classroom_dict = marist_world[4]
-    advisor_dict = marist_world[5]
-    river_dict = marist_world[6]
-    theater_dict = marist_world[7]
-    gym_dict = marist_world[8]
-    gallery_dict = marist_world[9]
-    
-    #Variables for all valid commands
-    north_command = "north"
-    west_command = "west"
-    east_command = "east"
-    south_command = "south"
-    help_command = "help"
-    quit_command = "quit"
-    examine_command = "examine"
-    player_commands = ["north", "west", "east", "south", "help", "quit", "examine"]
+    #Function that help to determine user move through the map
+    def move(current_location_index, command_index):
+        new_current_location = marist_map[current_location_index][command_index] 
+        if new_current_location != None:
+            print(marist_world[new_current_location]["summary"])
+        return new_current_location #Return new index of list in marist_map or None
+
+    player_commands = ["north", "east", "south", "west", "help", "quit", "examine"]
     
     #Promts for dialogue with user
     ask_for_name = "To continue, enter your name: "
@@ -49,7 +36,7 @@ def main():
     end = "You made this! Congratulations! \nIt was not that hard, right, "
     stops = "You have successfully completed the following number of stops:"
     
-    current_location = residence_dict
+    current_location = 0
     number_of_stops = 0
     
     print(title)
@@ -58,165 +45,29 @@ def main():
     print("Okay, " + name + ", \n" + marist_world[0]["summary"])
     print(valid)
     
-    #Infinite loop to navigate user through the game map
+    #Infinite loop to navigate user through the game map with the use of matrix and dictionary
     while True:
-        command = input(ask_command).lower()
-        #Check validity of the command
-        if command not in player_commands:
+        command = input(ask_command).lower() 
+        if command in player_commands:
+            command = player_commands.index(command)  #Checks if the command in the list of commands and determine the index of desire command
+            if command == 4:                          #Help command
+                print(valid)
+                continue
+            elif command == 5:                        #Quit command
+                break
+            elif command == 6:                        #Determine command
+                print(marist_world[current_location]["details"])
+                continue
+        else: 
             print('Your command is not available, try again or enter "Help"')
             continue
-        #Start proceed the command
-        if command == quit_command:
-            break
-        if command == help_command:
-            print(valid)
-            continue
-        #Examine command
-        if command == examine_command:
-            print(current_location["details"])
-            continue
-        #manage user commands from RESIDENCE HALL position
-        if current_location == residence_dict:
-            if command == south_command:
-                current_location = park_dict
-                number_of_stops += 1
-                print(park_dict["summary"])
-            elif command == east_command:
-                current_location = dininghall_dict
-                number_of_stops += 1
-                print(dininghall_dict["summary"])
-            else:
-                print(no_way)
-        #manage user commands from park position
-        elif current_location == park_dict:
-            if command == north_command:
-                current_location = residence_dict
-                number_of_stops += 1
-                print(residence_dict["summary"])
-            elif command == east_command:
-                current_location = library_dict
-                number_of_stops += 1
-                print(library_dict["summary"])
-            else:
-                print(no_way)
-        #manage user commands from dining hall position
-        elif current_location == dininghall_dict:
-            if command == north_command:
-                print(no_way) 
-            elif command == west_command:
-                current_location = residence_dict
-                number_of_stops += 1
-                print(residence_dict["summary"]) 
-            elif command == south_command:
-                current_location = library_dict
-                number_of_stops += 1
-                print(library_dict["summary"])
-            elif command == east_command:
-                current_location = advisor_dict
-                number_of_stops += 1
-                print(advisor_dict["summary"])
-        #manage user commands from library position
-        elif current_location == library_dict:
-            if command == north_command:
-                current_location = dininghall_dict
-                number_of_stops += 1
-                print(dininghall_dict["summary"]) 
-            elif command == west_command:
-                current_location = park_dict
-                number_of_stops += 1
-                print(park_dict["summary"])
-            elif command == south_command:
-                print(no_way)
-            elif command == east_command:
-                current_location = classroom_dict
-                number_of_stops += 1
-                print(classroom_dict["summary"])
-        #manage user commands from ADVISOR OFFICE position
-        elif current_location == advisor_dict: 
-            if command == north_command:
-                print(no_way)
-            elif command == west_command:
-                current_location = dininghall_dict
-                number_of_stops += 1
-                print(dininghall_dict["summary"])
-            elif command == south_command:
-                current_location = classroom_dict
-                number_of_stops += 1
-                print(classroom_dict["summary"])
-            elif command == east_command:
-                current_location = gym_dict
-                number_of_stops += 1
-                print(gym_dict["summary"])
-        #manage user command from classroom position
-        elif current_location == classroom_dict: 
-            if command == north_command:
-                current_location = advisor_dict
-                number_of_stops += 1
-                print(advisor_dict["summary"])
-            elif command == west_command:
-                current_location = library_dict
-                number_of_stops += 1
-                print(library_dict["summary"])
-            elif command == south_command:
-                current_location = river_dict
-                number_of_stops += 1
-                print(river_dict["summary"])
-            elif command == east_command:
-                current_location = theater_dict
-                number_of_stops += 1
-                print(theater_dict["summary"])
-        #manage user command from river position
-        elif current_location == river_dict:
-            if command == north_command:
-                current_location = classroom_dict
-                number_of_stops += 1
-                print(classroom_dict["summary"])
-            elif command == east_command:
-                current_location = gallery_dict
-                number_of_stops += 1
-                print(gallery_dict["summary"])
-            else:
-                print(no_way)
-        #manage user command from gym position
-        elif current_location == gym_dict: 
-            if command == west_command:
-                current_location = advisor_dict
-                number_of_stops += 1
-                print(advisor_dict["summary"])
-            elif command == south_command: 
-                current_location = theater_dict
-                number_of_stops += 1
-                print(theater_dict["summary"])
-            else:
-                print(no_way)
-        #manage user command from theater position
-        elif current_location == theater_dict: 
-            if command == north_command:
-                current_location = gym_dict
-                number_of_stops += 1
-                print(gym_dict["summary"])
-            elif command == west_command:
-                current_location = classroom_dict
-                number_of_stops += 1
-                print(classroom_dict["summary"])
-            elif command == south_command:
-                current_location = gallery_dict
-                number_of_stops += 1
-                print(gallery_dict["summary"])
-            elif command == east_command:
-                print(no_way)
-        #manage user commands from gallery position
-        elif current_location == gallery_dict:
-            if command == north_command:
-                current_location = theater_dict
-                number_of_stops += 1
-                print(theater_dict["summary"])
-            elif command == west_command:
-                current_location = river_dict
-                number_of_stops += 1
-                print(river_dict["summary"])
-            else:
-                print(no_way)
+        previous_location = current_location          
+        current_location = move(current_location, command) 
+        if current_location == None:
+            current_location = previous_location      #Return previous location index to make examine command work
+            print(no_way)
+        else:
+            number_of_stops += 1
 
     print(stops, number_of_stops)
     print(end + name + " ?")
