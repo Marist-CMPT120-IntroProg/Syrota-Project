@@ -2,7 +2,7 @@ def main():
     title = "Surviving in Marist college!"
     introduction = "Welcome to your new college and congratulation on your first day here! \nYour main goal is to go through all 10 locations and survive..."
     
-    marist_world = [{"name": "RESIDENCE HALL", "summary": "This is RESIDENCE HALL. \nHere you will be living with your roommate! Be sure that you know how to share space with other people.", "details": "Here you will find your bed, table, chair and your wardrobe. \nAs well as a window with a view of the whole university", "was_visited": False},
+    marist_world = [{"name": "RESIDENCE HALL", "summary": "This is RESIDENCE HALL. \nHere you will be living with your roommate! Be sure that you know how to share space with other people.", "details": "Here you will find your bed, table, chair and your wardrobe. \nAs well as a window with a view of the whole university", "was_visited": True},
                     {"name": "PARK", "summary": "We are now in the PARK. \nHere you can make your homework or hang out with your classmates", "details": "Here you can see the most popular tree on the entire campus, where everyone has had a picnic at least once.", "was_visited": False},
                     {"name": "LIBRARY", "summary": "This is a LIBRARY - the best place to study and make your homework.", "details": "The LIBRARY has 3 floors. You can find here tones of different books, places for collaboration, as well as quiet spaces", "was_visited": False},
                     {"name": "DINING HALL", "summary": "Well..I know you are tired and hungry, right? \nHere is the DINING HALL! \nYou can choose any food you want and fill yourself with energy", "details": "We are now inside the DINING HALL. \nEach table has different food from all over the world. \nOur chefs organize different events once a week.", "was_visited": False},
@@ -22,6 +22,10 @@ def main():
         new_current_location = marist_map[current_location_index][command_index] 
         if new_current_location != None:
             print(marist_world[new_current_location]["summary"])
+            if marist_world[new_current_location]["was_visited"] == False:
+                nonlocal visited_location
+                visited_location += 1
+                marist_world[new_current_location]["was_visited"] = True
         return new_current_location #Return new index of list in marist_map or None
 
     player_commands = ["north", "east", "south", "west", "help", "quit", "examine"]
@@ -35,9 +39,11 @@ def main():
     copywright = "© Karina Syrota, 2022"
     end = "You made this! Congratulations! \nIt was not that hard, right, "
     stops = "You have successfully completed the following number of stops:"
+    score = "Your score is: "
     
     current_location = 0
     number_of_stops = 0
+    visited_location = 1 #Starting from Residence Hall
     
     print(title)
     print(introduction)
@@ -63,6 +69,7 @@ def main():
             continue
         previous_location = current_location          
         current_location = move(current_location, command) 
+        print("You find ", visited_location, " locations out of 10") 
         if current_location == None:
             current_location = previous_location      #Return previous location index to make examine command work
             print(no_way)
@@ -71,6 +78,7 @@ def main():
 
     print(stops, number_of_stops)
     print(end + name + " ?")
+    print(score, visited_location)
     print("_____________________")
     print(copywright)
     
