@@ -6,6 +6,7 @@ class Player:
         self.current_location_index = 0 
         self.move_counter = 0
         self.score_counter = 0
+        self.player_item_list = []
         
     def __str__(self):
         return "You visited {}/10 locations with {} stops".format(self.score_counter, self.move_counter)
@@ -30,6 +31,37 @@ class Player:
     def count_score(self):
         self.score_counter += 1
     
+    def pickup_item(self):
+        if self.world_map.locale_list[self.current_location_index].item != None: #check if there is an item in location
+            print("Now you have {}!".format((self.world_map.locale_list[self.current_location_index].item).upper()))
+            self.player_item_list.append(self.world_map.locale_list[self.current_location_index].item) #add item to players list
+            self.world_map.locale_list[self.current_location_index].item = None #change current item name to None
+        else:
+            print("There is no item you can pick up")
+    
+    def drop_item(self):
+        self.show_player_items()
+        if len(self.player_item_list) > 0:     #check if player have any item
+            if self.world_map.locale_list[self.current_location_index].item == None:   #check if there is current location contains item
+                drop_index = int(input("Enter number of item you want to drop: "))
+                self.world_map.locale_list[self.current_location_index].item = self.player_item_list[drop_index] #change currrent item in location to one user wants to drop
+                print("You drop {} in {}".format(self.world_map.locale_list[self.current_location_index].item, self.world_map.locale_list[self.current_location_index].name))
+                self.player_item_list.pop(drop_index) #delete item from players list
+            else:
+                print("These location already have an item. To drop your item, pick up location item first.")
+        else:
+            print("You have no item to drop.")
+     
+    #Method that prints all items that player have   
+    def show_player_items(self):
+        print("YOUR ITEMS")
+        print("___________________________")
+        if len(self.player_item_list) == 0:
+            print("You have no items")
+        else:
+            for item in self.player_item_list:
+                print("{}. {}".format(self.player_item_list.index(item), item))
+    
     #input user's command and return it
     def get_move(self): 
         while True:
@@ -42,6 +74,26 @@ class Player:
                 continue
             if command == "examine":
                 print(self.world_map.locale_list[self.current_location_index].details)
+                if self.world_map.locale_list[self.current_location_index].item != None:
+                    print("You find {}!!!".format(self.world_map.locale_list[self.current_location_index].item))
+                else:
+                    print("There is no items on this location:(")
+                while True:
+                    command_item = input("What do you want to do with your objects? \n \
+                1 - Show all your items \n \
+                2 - Take the item \n \
+                3 - Drop the item, \n \
+                4 - No action now and move on: ")
+                    if command_item == "1":
+                        self.show_player_items()
+                    elif command_item == "2":
+                        self.pickup_item()
+                    elif command_item == "3":
+                        self.drop_item()
+                    elif command_item == "4":
+                        break
+                    else:
+                        print("This command is not available! Enter a number of command")
                 continue
             break
         return command

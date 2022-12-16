@@ -10,4 +10,12 @@ class World:
     def __str__(self):
         return "Surviving in Marist college!\nWelcome to your new college and congratulation on your first day here! \nYour main goal is to go through all 10 locations and survive..."
 
+    def count_items(self):
+        self.total_items = 0
+        for place in self.locale_list:
+            if place.item != None:
+                self.total_items += 1
+        return print(self.total_items)
     
+    
+            
