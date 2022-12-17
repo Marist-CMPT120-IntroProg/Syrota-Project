@@ -1,6 +1,8 @@
 from locale import Locale
 from world import World
 from player import Player
+from item import Item
+import random
 
 marist_world = [{"name": "RESIDENCE HALL", "summary": "This is RESIDENCE HALL. \nHere you will be living with your roommate! Be sure that you know how to share space with other people.", "details": "Here you will find your bed, table, chair and your wardrobe. \nAs well as a window with a view of the whole university", "was_visited": True, "item": None},
                 {"name": "PARK", "summary": "We are now in the PARK. \nHere you can make your homework or hang out with your classmates", "details": "Here you can see the most popular tree on the entire campus, where everyone has had a picnic at least once.", "was_visited": False, "item": None},
@@ -14,19 +16,52 @@ marist_world = [{"name": "RESIDENCE HALL", "summary": "This is RESIDENCE HALL. \
                 {"name": "GALLERY", "summary": "This is a GALLERY! \nA lot of students participate in creating annual exhibitions here", "details": "Here you can see the progress of other players, \nand at the end of your journey post your own and share your experience", "was_visited": False, "item": "Empty canvas"}
                     ]
 
-locale_object = []
+
 marist_map = [[None,3,1,None],[0,2,None,None],[3,4,None,1],[None,5,2,0],[5,7,6,2],[None,8,4,3],[4,9,None,None],[8,None,9,4],[None,None,7,5],[7,None,None,6]]
 
-#replace each dictionary in marist_world with a new instance of your Locale class.
-for place in marist_world:
-    locale_object.append(Locale(name = place["name"], summary = place["summary"], details = place["details"], item = place["item"]))
-     
-#Create a new World object 
-marist = World(locale_list = locale_object, nav_list = marist_map)
+def genarate_world():
+    global locale_object
+    global correct_items_objects_map
+    global items_object_list
+    locale_object = []
+    correct_items_objects_map = []
+    items_object_list = []
+    
+    #add items from dictionary to list in correct order
+    for item in marist_world:
+        if item["item"] != None:
+            correct_items_objects_map.append(Item(name = item["item"], item_correct_loc_id = marist_world.index(item)))
+        else:
+            correct_items_objects_map.append(None)
 
-#Create a new Player object 
-player_1 = Player(world_map = marist)
+    #replace each dictionary in marist_world with a new instance of your Locale class and randomly place item object on maps
+    for place in marist_world:
+        while True:
+            start_item = random.choice(correct_items_objects_map)
+            if start_item == None:
+                correct_items_objects_map.remove(start_item)
+                break
+            if start_item.item_correct_loc_id != marist_world.index(place):
+                start_item.item_current_loc_id = marist_world.index(place)
+                correct_items_objects_map.remove(start_item)
+                items_object_list.append(start_item)
+                break
+        locale_object.append(Locale(name = place["name"], summary = place["summary"], details = place["details"], item = start_item))
+
 
 def main():
-    player_1.act()
+    while True:
+        genarate_world()
+        #Create a new World object 
+        marist = World(locale_list = locale_object, nav_list = marist_map, items_object_list = items_object_list)
+        #Create a new Player object  
+        player_1 = Player(world_map = marist)
+        player_1.act()
+        replay = input("Do you want to replay?(Yes - for replay, Any other keys - for exit): ").lower()        
+        if replay != "yes":
+            break
+    print("Come back next time to discover new interesting Marist locations, which you are not visited yet. \nSee you!")
+    print("_____________________")
+    print("© Karina Syrota, 2022")
 main()
+   
